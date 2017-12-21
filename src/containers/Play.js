@@ -5,8 +5,20 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native';
+import { connect } from 'react-redux'
 import { Button } from 'react-native-elements';
 import styles from '../styles/Styles';
+import { addLetter } from '../actions'
+
+const mapStateToProps = (state) => (
+{
+    word: state.word
+})
+
+const mapDispatchToProps = dispatch => ({
+    addLetter: (letter) => {
+        dispatch(addLetter(letter))}
+})
 
 class Letter extends Component {
     state = {
@@ -40,7 +52,7 @@ class Letter extends Component {
     }
 }
 
-export default class Play extends Component {
+class Play extends Component {
     state = {
         word: ''
     }
@@ -54,20 +66,20 @@ export default class Play extends Component {
         const navigation = this.props.navigation
         return (
             <View style={styles.container}>
-                <Text>{this.state.word}</Text>
+                <Text>{this.props.word}</Text>
                 <View style={styles.letters}>
-                    <Letter setWord={this.setWord}/>
-                    <Letter setWord={this.setWord}/>
-                    <Letter setWord={this.setWord}/>
-                    <Letter setWord={this.setWord}/>
-                    <Letter setWord={this.setWord}/>
-                    <Letter setWord={this.setWord}/>
-                    <Letter setWord={this.setWord}/>
-                    <Letter setWord={this.setWord}/>
-                    <Letter setWord={this.setWord}/>
-                    <Letter setWord={this.setWord}/>
-                    <Letter setWord={this.setWord}/>
-                    <Letter setWord={this.setWord}/>
+                    <Letter setWord={this.props.addLetter}/>
+                    <Letter setWord={this.props.addLetter}/>
+                    <Letter setWord={this.props.addLetter}/>
+                    <Letter setWord={this.props.addLetter}/>
+                    <Letter setWord={this.props.addLetter}/>
+                    <Letter setWord={this.props.addLetter}/>
+                    <Letter setWord={this.props.addLetter}/>
+                    <Letter setWord={this.props.addLetter}/>
+                    <Letter setWord={this.props.addLetter}/>
+                    <Letter setWord={this.props.addLetter}/>
+                    <Letter setWord={this.props.addLetter}/>
+                    <Letter setWord={this.props.addLetter}/>
                 </View>
                 <View style={{backgroundColor: 'transparent', marginTop: 10}}>
                     <Button
@@ -82,3 +94,5 @@ export default class Play extends Component {
         )
     }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Play)

@@ -1,5 +1,6 @@
+import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
 import App from './src/containers/App';
-import RootNavigator from './src/router/Routes'
+import Root from './src/containers/Root'
 
-AppRegistry.registerComponent('longestWord', () => RootNavigator);
+AppRegistry.registerComponent('longestWord', () => Root );
