@@ -5,6 +5,8 @@ import {
   Text,
   View
 } from 'react-native';
+import { Button } from 'react-native-elements';
+
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -12,9 +14,10 @@ const instructions = Platform.select({
   android: 'Double tap R on your keyboard to reload,\n' +
     'Shake or press menu button for dev menu',
 });
-
 export default class App extends Component {
   render() {
+    const navigation = this.props.navigation
+    console.log('this', this.props)
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
@@ -23,9 +26,13 @@ export default class App extends Component {
         <Text style={styles.instructions}>
           To get started, edit App.js
         </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+        <Button
+          raised
+          onPress={() => navigation.navigate('Play')}
+          buttonStyle={{backgroundColor: 'red', borderRadius: 10}}
+          textStyle={{textAlign: 'center'}}
+          title={`Welcome to\nReact Native Elements`}
+        />
       </View>
     );
   }

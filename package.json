@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
+	"clean-cache": "watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules && yarn",
     "test": "jest"
   },
   "dependencies": {
