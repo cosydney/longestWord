@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {
   Platform,
-  StyleSheet,
   Text,
   View
 } from 'react-native';
@@ -17,15 +16,14 @@ export default class Score extends Component {
         const navigation = this.props.navigation
         return (
             <View>
-            <Button
-                raised
-                onPress={() => navigation.dispatch(resetAction)}
-                buttonStyle={{backgroundColor: 'red', borderRadius: 10}}
-                textStyle={{textAlign: 'center'}}
-                title={`Welcome to\nReact Native Elements`}
-             />
-
                 <Text>I'm the Score container</Text>
+                <Button
+                    raised
+                    onPress={() => navigation.dispatch(resetAction)}
+                    buttonStyle={{backgroundColor: 'skyblue', borderRadius: 10}}
+                    textStyle={{textAlign: 'center'}}
+                    title={`Welcome to\nReact Native Elements`}
+                />
             </View>
         )
     }
