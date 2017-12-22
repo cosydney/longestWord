@@ -12,10 +12,6 @@ import Activity from '../components/Activity';
 import ScoreWin from '../components/ScoreWin';
 import ScoreLoose from '../components/ScoreLoose';
 
-const mapStateToProps = (state) => ({
-    word: state.word
-})
-
 const apiLink = 'http://api.pearson.com/v2/dictionaries/ldoce5/entries?search='
 
 class Score extends Component {  
@@ -25,17 +21,16 @@ class Score extends Component {
     }
 
     componentWillMount() {
-        console.log(apiLink + this.props.word);
         return fetch(apiLink + this.props.word)
         .then((response) => {
             return response.json();
         })
         .then((responseJson) => {
-        this.setState({result: responseJson.results, isLoading: false})
-        return responseJson;
+            this.setState({result: responseJson.results, isLoading: false})
+            return responseJson;
         })
         .catch((error) => {
-        console.error(error);
+            console.error(error);
         });
     }
 
@@ -59,5 +54,9 @@ class Score extends Component {
         }    
     }
 }
+
+const mapStateToProps = (state) => ({
+    word: state.word
+})
 
 export default connect(mapStateToProps)(Score)
