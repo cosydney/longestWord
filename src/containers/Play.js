@@ -31,11 +31,11 @@ class Play extends Component {
             timeLeft: 15,
             id: []
         };
-        // setInterval(() => {
-        //   this.setState(previousState => {
-        //     return { timeLeft: previousState.timeLeft - 1 };
-        //   });
-        // }, 1000);
+        setInterval(() => {
+          this.setState(previousState => {
+            return { timeLeft: previousState.timeLeft - 1 };
+          });
+        }, 1000);
       }
 
     resetWord = () => {
