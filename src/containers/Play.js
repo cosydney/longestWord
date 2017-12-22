@@ -31,15 +31,11 @@ class Play extends Component {
             timeLeft: 15,
             id: []
         };
-        setInterval(() => {
-          this.setState(previousState => {
-            return { timeLeft: previousState.timeLeft - 1 };
-          });
-        }, 1000);
       }
 
     resetWord = () => {
         this.props.resetWord()
+        this.setState({id: []})
     }
 
     addId = (id) => {
@@ -62,6 +58,11 @@ class Play extends Component {
     
     componentWillMount() {
         this.resetWord()
+        // setInterval(() => {
+        //     this.setState(previousState => {
+        //       return { timeLeft: previousState.timeLeft - 1 };
+        //     });
+        //   }, 1000);
     }
 
     isDisabled = (id) => {
@@ -73,6 +74,7 @@ class Play extends Component {
     }
 
     render() {
+        data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
         const navigation = this.props.navigation
         if (this.state.timeLeft == 0) {
             navigation.navigate('Score')
@@ -98,18 +100,11 @@ class Play extends Component {
                 </View>
             </Card>
                 <View style={styles.letters}>
-                    <Letter id={1} disabled={this.isDisabled(1)} addId={this.addId} word={props.word} setWord={props.addLetter}/>
-                    <Letter id={2} disabled={this.isDisabled(2)} addId={this.addId} word={props.word} setWord={props.addLetter}/>
-                    <Letter id={3} disabled={this.isDisabled(3)} addId={this.addId} word={props.word} setWord={props.addLetter}/>
-                    <Letter id={4} disabled={this.isDisabled(4)} addId={this.addId} word={props.word} setWord={props.addLetter}/>
-                    <Letter id={5} disabled={this.isDisabled(5)} addId={this.addId} word={props.word} setWord={props.addLetter}/>
-                    <Letter id={6} disabled={this.isDisabled(6)} addId={this.addId} word={props.word} setWord={props.addLetter}/>
-                    <Letter id={7} disabled={this.isDisabled(7)} addId={this.addId} word={props.word} setWord={props.addLetter}/>
-                    <Letter id={8} disabled={this.isDisabled(8)} addId={this.addId} word={props.word} setWord={props.addLetter}/>
-                    <Letter id={9} disabled={this.isDisabled(9)} addId={this.addId} word={props.word} setWord={props.addLetter}/>
-                    <Letter id={10} disabled={this.isDisabled(10)} addId={this.addId} word={props.word} setWord={props.addLetter}/>
-                    <Letter id={11} disabled={this.isDisabled(11)} addId={this.addId} word={props.word} setWord={props.addLetter}/>
-                    <Letter id={12} disabled={this.isDisabled(12)} addId={this.addId} word={props.word} setWord={props.addLetter}/>
+                {data.map((element, index) => {
+                    return (
+                    <Letter key={index} id={index} disabled={this.isDisabled(1)} addId={this.addId} word={props.word} setWord={props.addLetter}/>
+                    )
+                })}                    
                 </View>
                 <View style={{backgroundColor: 'transparent', marginTop: 10, flexDirection: 'row'}}>
                     <Button
