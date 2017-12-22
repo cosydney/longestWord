@@ -29,14 +29,15 @@ const styles = StyleSheet.create({
         width: 75,
         height: 75,
         margin: 6,
-        backgroundColor: 'lightblue',
+        backgroundColor: 'lightgreen',
         justifyContent: 'center',
         alignItems: 'center',
     },
     letters: {
         flexDirection: 'row',
         justifyContent: 'center',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        marginBottom: 30,
     },
     letterText: {
         fontSize: 40,

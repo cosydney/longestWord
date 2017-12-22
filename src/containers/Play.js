@@ -4,11 +4,14 @@ import {
   Text,
   View,
   TouchableOpacity,
+  Dimensions
 } from 'react-native';
 import { connect } from 'react-redux'
-import { Button } from 'react-native-elements';
+import { Button, Card } from 'react-native-elements';
 import styles from '../styles/Styles';
-import { addLetter } from '../actions'
+import { addLetter, resetWord } from '../actions';
+import Letter from '../components/Letter'
+let {width, height} = Dimensions.get('window')
 
 const mapStateToProps = (state) => (
 {
@@ -17,71 +20,53 @@ const mapStateToProps = (state) => (
 
 const mapDispatchToProps = dispatch => ({
     addLetter: (letter) => {
-        dispatch(addLetter(letter))}
+        dispatch(addLetter(letter))},
+    resetWord: () => {dispatch(resetWord())}
 })
 
-class Letter extends Component {
-    state = {
-        letter: '',
-        disabled: false
-    }
-
-    random_character() {
-        var chars = "ABCDEEFGHIIJKLMNOOPQRSTUUVWXYZ";
-        return chars.substr( Math.floor(Math.random() * 30), 1);
+class Play extends Component {
+    resetWord = () => {
+        this.props.resetWord()
     }
 
     componentWillMount() {
-        this.setState({letter: this.random_character()})
-    }
-
-    render() {
-        return (
-            <TouchableOpacity 
-                style={[styles.letterTouch, this.state.disabled ? styles.disabled : null]}
-                disabled={this.state.disabled}
-                onPress={() => {
-                    this.props.setWord(this.state.letter),
-                    this.setState({disabled: true})
-                    }
-                }
-                >
-                <Text style={styles.letterText}> {this.state.letter} </Text>
-            </TouchableOpacity>
-        )
-    }
-}
-
-class Play extends Component {
-    state = {
-        word: ''
-    }
-
-    setWord = (letter) => {
-        let word = this.state.word + letter
-        this.setState({word})
+        this.resetWord()
     }
 
     render() {
         const navigation = this.props.navigation
         return (
             <View style={styles.container}>
-                <Text>{this.props.word}</Text>
+            <Card
+                containerStyle={{ marginBottom: 20, width: width - 30}}
+                title='The longest word'>
+                <Text style={{marginBottom: 10, fontSize: 40, paddingVertical: 10 }}>
+                    {this.props.word ? this.props.word : ' '}
+                </Text>
+            </Card>
+                <Text></Text>
                 <View style={styles.letters}>
-                    <Letter setWord={this.props.addLetter}/>
-                    <Letter setWord={this.props.addLetter}/>
-                    <Letter setWord={this.props.addLetter}/>
-                    <Letter setWord={this.props.addLetter}/>
-                    <Letter setWord={this.props.addLetter}/>
-                    <Letter setWord={this.props.addLetter}/>
-                    <Letter setWord={this.props.addLetter}/>
-                    <Letter setWord={this.props.addLetter}/>
-                    <Letter setWord={this.props.addLetter}/>
-                    <Letter setWord={this.props.addLetter}/>
-                    <Letter setWord={this.props.addLetter}/>
-                    <Letter setWord={this.props.addLetter}/>
+                    <Letter word={this.props.word} setWord={this.props.addLetter}/>
+                    <Letter word={this.props.word} setWord={this.props.addLetter}/>
+                    <Letter word={this.props.word} setWord={this.props.addLetter}/>
+                    <Letter word={this.props.word} setWord={this.props.addLetter}/>
+                    <Letter word={this.props.word} setWord={this.props.addLetter}/>
+                    <Letter word={this.props.word} setWord={this.props.addLetter}/>
+                    <Letter word={this.props.word} setWord={this.props.addLetter}/>
+                    <Letter word={this.props.word} setWord={this.props.addLetter}/>
+                    <Letter word={this.props.word} setWord={this.props.addLetter}/>
+                    <Letter word={this.props.word} setWord={this.props.addLetter}/>
+                    <Letter word={this.props.word} setWord={this.props.addLetter}/>
+                    <Letter word={this.props.word} setWord={this.props.addLetter}/>
                 </View>
-                <View style={{backgroundColor: 'transparent', marginTop: 10}}>
+                <View style={{backgroundColor: 'transparent', marginTop: 10, flexDirection: 'row'}}>
+                    <Button
+                            raised
+                            onPress={() => this.resetWord()}
+                            buttonStyle={{backgroundColor: 'skyblue', borderRadius: 10}}
+                            textStyle={{textAlign: 'center'}}
+                            title={`Reset my word`}
+                    />
                     <Button
                         raised
                         onPress={() => navigation.navigate('Score')}

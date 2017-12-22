@@ -1,8 +1,9 @@
-const word = (state = '', action) => {
-    console.log('state', state, 'action ', action)
+const word = (state = 'hello', action) => {
     switch (action.type) {
       case 'ADDLETTER':
         return state + action.letter
+      case 'RESETWORD':
+        return ''
       default:
         return state
     }
