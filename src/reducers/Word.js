@@ -4,6 +4,9 @@ const word = (state = 'hello', action) => {
         return state + action.letter
       case 'RESETWORD':
         return ''
+      case 'CORRECTWORD':
+        state = state.substring(0, state.length - 1);
+        return state
       default:
         return state
     }

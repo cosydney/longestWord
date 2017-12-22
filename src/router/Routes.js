@@ -7,7 +7,7 @@ import Score from '../containers/Score'
 
 const navigationOptions = {
     headerMode: 'None',
-    initialRouteName: 'App',
+    initialRouteName: 'Play',
   };
 
 const RootNavigator = StackNavigator({

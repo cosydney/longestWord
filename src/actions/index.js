@@ -3,6 +3,10 @@ export const addLetter = (letter) => ({
     letter: letter
   })
 
+export const correctWord = () => ({
+  type: 'CORRECTWORD',
+})
+
 export const resetWord = () => ({
   type: 'RESETWORD',
 })
