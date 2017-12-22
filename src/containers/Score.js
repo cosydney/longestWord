@@ -22,20 +22,20 @@ class Score extends Component {
     }
 
     componentWillMount() {
-        console.log(apiLink + this.props.word);
-        return fetch(apiLink + this.props.word)
-        .then((response) => {
-            response.json();
-            console.log('====================================');
-            console.log(response.json);
-            console.log('====================================');
-        })
-        .then((responseJson) => {
-          return responseJson;
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+        // console.log(apiLink + this.props.word);
+        // return fetch(apiLink + this.props.word)
+        // .then((response) => {
+        //     response.json();
+        //     console.log('====================================');
+        //     console.log(response.json);
+        //     console.log('====================================');
+        // })
+        // .then((responseJson) => {
+        //   return responseJson;
+        // })
+        // .catch((error) => {
+        //   console.error(error);
+        // });
     }
 
     render() {
