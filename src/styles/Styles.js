@@ -41,7 +41,13 @@ const styles = StyleSheet.create({
     },
     letterText: {
         fontSize: 40,
+    },
+    playAgainButton: {
+        backgroundColor: 'skyblue',
+        borderRadius: 10,
+        marginTop: 20
     }
-  });
+  })
+  ;
   
   export default styles
