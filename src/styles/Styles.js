@@ -47,6 +47,18 @@ const styles = StyleSheet.create({
         backgroundColor: 'skyblue',
         borderRadius: 10,
         marginTop: 20
+    },
+    correctButton: {
+        backgroundColor: 'transparent',
+        margin: 10,
+        position: 'absolute',
+        top: 50,
+        right: -35,
+    },
+    wordInput: {
+        marginBottom: 10,
+        fontSize: 40,
+        paddingVertical: 10
     }
   })
   ;

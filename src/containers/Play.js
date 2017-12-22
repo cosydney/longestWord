@@ -28,9 +28,9 @@ class Play extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            timeLeft: 15
+            timeLeft: 15,
+            id: []
         };
-    
         // setInterval(() => {
         //   this.setState(previousState => {
         //     return { timeLeft: previousState.timeLeft - 1 };
@@ -42,13 +42,34 @@ class Play extends Component {
         this.props.resetWord()
     }
 
+    addId = (id) => {
+        arr = this.state.id
+        arr.push(id)
+        this.setState({id: arr})
+    }
+
+    deleteId = () => {
+        arr = this.state.id
+        arr.pop()
+        this.setState({id: arr
+        })
+    }
+
     correctWord = () => {
         this.props.correctWord()
-        // str = str.substring(0, str.length - 1);
+        this.deleteId()
     } 
     
     componentWillMount() {
         this.resetWord()
+    }
+
+    isDisabled = (id) => {
+        if (this.state.id.includes(id)) {
+            return true
+        } else {
+            return false
+        }
     }
 
     render() {
@@ -56,16 +77,17 @@ class Play extends Component {
         if (this.state.timeLeft == 0) {
             navigation.navigate('Score')
         }
+        const props = this.props
         return (
             <View style={styles.container}>
             <Text>Timer: {this.state.timeLeft}</Text>
             <Card
                 containerStyle={{ marginBottom: 20, width: width - 30}}
                 title='The longest word'>
-                <Text style={{marginBottom: 10, fontSize: 40, paddingVertical: 10 }}>
+                <Text style={styles.wordInput}>
                     {this.props.word ? this.props.word : ' '}
                 </Text>
-                <View style={{backgroundColor: 'transparent', margin: 10, position: 'absolute', top: 50, right: -30}}>
+                <View style={styles.correctButton}>
                     <Button
                         raised
                         onPress={() => this.correctWord()}
@@ -76,18 +98,18 @@ class Play extends Component {
                 </View>
             </Card>
                 <View style={styles.letters}>
-                    <Letter id={1} word={this.props.word} setWord={this.props.addLetter}/>
-                    <Letter id={2} word={this.props.word} setWord={this.props.addLetter}/>
-                    <Letter id={3} word={this.props.word} setWord={this.props.addLetter}/>
-                    <Letter id={4} word={this.props.word} setWord={this.props.addLetter}/>
-                    <Letter id={5} word={this.props.word} setWord={this.props.addLetter}/>
-                    <Letter id={6} word={this.props.word} setWord={this.props.addLetter}/>
-                    <Letter id={7} word={this.props.word} setWord={this.props.addLetter}/>
-                    <Letter id={8} word={this.props.word} setWord={this.props.addLetter}/>
-                    <Letter id={9} word={this.props.word} setWord={this.props.addLetter}/>
-                    <Letter id={10} word={this.props.word} setWord={this.props.addLetter}/>
-                    <Letter id={11} word={this.props.word} setWord={this.props.addLetter}/>
-                    <Letter id={12} word={this.props.word} setWord={this.props.addLetter}/>
+                    <Letter id={1} disabled={this.isDisabled(1)} addId={this.addId} word={props.word} setWord={props.addLetter}/>
+                    <Letter id={2} disabled={this.isDisabled(2)} addId={this.addId} word={props.word} setWord={props.addLetter}/>
+                    <Letter id={3} disabled={this.isDisabled(3)} addId={this.addId} word={props.word} setWord={props.addLetter}/>
+                    <Letter id={4} disabled={this.isDisabled(4)} addId={this.addId} word={props.word} setWord={props.addLetter}/>
+                    <Letter id={5} disabled={this.isDisabled(5)} addId={this.addId} word={props.word} setWord={props.addLetter}/>
+                    <Letter id={6} disabled={this.isDisabled(6)} addId={this.addId} word={props.word} setWord={props.addLetter}/>
+                    <Letter id={7} disabled={this.isDisabled(7)} addId={this.addId} word={props.word} setWord={props.addLetter}/>
+                    <Letter id={8} disabled={this.isDisabled(8)} addId={this.addId} word={props.word} setWord={props.addLetter}/>
+                    <Letter id={9} disabled={this.isDisabled(9)} addId={this.addId} word={props.word} setWord={props.addLetter}/>
+                    <Letter id={10} disabled={this.isDisabled(10)} addId={this.addId} word={props.word} setWord={props.addLetter}/>
+                    <Letter id={11} disabled={this.isDisabled(11)} addId={this.addId} word={props.word} setWord={props.addLetter}/>
+                    <Letter id={12} disabled={this.isDisabled(12)} addId={this.addId} word={props.word} setWord={props.addLetter}/>
                 </View>
                 <View style={{backgroundColor: 'transparent', marginTop: 10, flexDirection: 'row'}}>
                     <Button

@@ -9,7 +9,6 @@ import styles from '../styles/Styles';
 export default class Letter extends Component {
     state = {
         letter: '',
-        disabled: false
     }
 
     random_character() {
@@ -21,22 +20,15 @@ export default class Letter extends Component {
         this.setState({letter: this.random_character()})
     }
 
-    componentDidUpdate() {
-        if (this.props.word == '') {
-            if (this.state.disabled) {
-                this.setState({disabled: false})
-            }
-        }
-    }
-
     render() {
         return (
             <TouchableOpacity 
-                style={[styles.letterTouch, this.state.disabled ? styles.disabled : null]}
-                disabled={this.state.disabled}
+                style={[styles.letterTouch, this.props.disabled ? styles.disabled : null]}
+                disabled={this.props.disabled}
                 onPress={() => {
                     this.props.setWord(this.state.letter),
                     this.setState({disabled: true})
+                    this.props.addId(this.props.id)
                     }
                 }
                 >
