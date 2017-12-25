@@ -6,7 +6,6 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import { connect } from 'react-redux'
-import { Button } from 'react-native-elements';
 import styles from '../styles/Styles';
 import Activity from '../components/Activity';
 import ScoreWin from '../components/ScoreWin';

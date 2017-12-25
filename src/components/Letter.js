@@ -12,8 +12,8 @@ export default class Letter extends Component {
     }
 
     random_character() {
-        var chars = "ABCDEEFGHIIJKLMNOOPQRSTUUVWXYYZ";
-        return chars.substr( Math.floor(Math.random() * 31), 1);
+        var chars = "ABCDEEEFGHIIIJKLMNOOOPQRSTUUUVWXYYYZ";
+        return chars.substr( Math.floor(Math.random() * 36), 1);
     }
 
     componentWillMount() {
