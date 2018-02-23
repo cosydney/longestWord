@@ -102,7 +102,13 @@ class Play extends Component {
                 <View style={styles.letters}>
                 {data.map((element, index) => {
                     return (
-                    <Letter key={index} id={index} disabled={this.isDisabled(1)} addId={this.addId} word={props.word} setWord={props.addLetter}/>
+                    <Letter 
+                    key={index} 
+                    id={index} 
+                    disabled={this.isDisabled(index)} 
+                    addId={this.addId} 
+                    word={props.word} 
+                    setWord={props.addLetter}/>
                     )
                 })}                    
                 </View>
