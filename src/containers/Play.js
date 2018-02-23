@@ -28,7 +28,7 @@ class Play extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            timeLeft: 15,
+            timeLeft: 60,
             id: []
         };
       }
@@ -58,19 +58,17 @@ class Play extends Component {
     
     componentWillMount() {
         this.resetWord()
-        // setInterval(() => {
-        //     this.setState(previousState => {
-        //       return { timeLeft: previousState.timeLeft - 1 };
-        //     });
-        //   }, 1000);
+        setInterval(() => {
+            this.setState(previousState => {
+              return { timeLeft: previousState.timeLeft - 1 };
+            });
+          }, 1000);
     }
 
     isDisabled = (id) => {
-        if (this.state.id.includes(id)) {
-            return true
-        } else {
-            return false
-        }
+        let disabled
+        this.state.id.includes(id) ? disabled = true : disabled = false;
+        return disabled
     }
 
     render() {
@@ -86,6 +84,7 @@ class Play extends Component {
             <Card
                 containerStyle={{ marginBottom: 20, width: width - 30}}
                 title='The longest word'>
+                <Text style={{position: 'relative', top: -48, right: -250, color:'grey'}}>Timer: {this.state.timeLeft}</Text>            
                 <Text style={styles.wordInput}>
                     {this.props.word ? this.props.word : ' '}
                 </Text>
