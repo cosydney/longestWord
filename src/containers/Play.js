@@ -81,7 +81,7 @@ class Play extends Component {
         }
         const props = this.props
         return (
-            <View style={styles.container}>
+            <View style={[styles.container, {paddingTop: 10}]}>
             <Text>Timer: {this.state.timeLeft}</Text>
             <Card
                 containerStyle={{ marginBottom: 20, width: width - 30}}
