@@ -10,6 +10,7 @@ import styles from '../styles/Styles';
 export default class App extends Component {
   render() {
     const navigation = this.props.navigation
+    console.disableYellowBox = true;
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
@@ -22,7 +23,7 @@ export default class App extends Component {
         - 12 random letters will be given to you
         </Text>
         <Text style={styles.instructions}>
-        - You have 15 seconds to find the longest word
+        - You have 60 seconds to find the longest word
         </Text>
         <View style={{marginTop: 20, backgroundColor: 'transparent'}}>
           <Button
