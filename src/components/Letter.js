@@ -11,13 +11,13 @@ export default class Letter extends Component {
         letter: '',
     }
 
-    random_character() {
+    randomCharacter() {
         var chars = "ABCDEEEFGHIIIJKLMNOOOPQRSTUUUVWXYYYZ";
         return chars.substr( Math.floor(Math.random() * 36), 1);
     }
 
     componentWillMount() {
-        this.setState({letter: this.random_character()})
+        this.setState({letter: this.randomCharacter()})
     }
 
     render() {
