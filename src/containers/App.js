@@ -10,7 +10,6 @@ import styles from '../styles/Styles';
 export default class App extends Component {
   render() {
     const navigation = this.props.navigation
-    console.disableYellowBox = true;
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
